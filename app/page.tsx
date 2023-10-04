@@ -12,7 +12,7 @@ export default async function Home() {
         <h1 className="text-9xl font-thin">Pokédex</h1>
         <h4 className="text-2xl font-light">A Database for 1st Generation Pokemons</h4>
       </div>
-      <Input pokemons={pokemons} />
+      <Input className="max-w-[500px] w-full" pokemons={pokemons} />
     </main>
   )
 }

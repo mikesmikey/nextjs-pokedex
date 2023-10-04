@@ -8,9 +8,9 @@ import Pokeball from '@/assets/Pokeball.svg'
 import Image from 'next/image'
 
 interface InputProps extends React.ComponentPropsWithoutRef<"form"> {
-    pokemons: Pokemon[]
+    pokemons: Pokemon[];
 }
-export default function Input({ pokemons }: InputProps) {
+export default function Input({ pokemons, className }: InputProps) {
     const [inputText, setInputText] = useState<string>('')
     const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([])
     const router = useRouter()
@@ -54,7 +54,7 @@ export default function Input({ pokemons }: InputProps) {
     }
 
     return (
-        <form className='relative flex gap-2 p-2 rounded-xl text-black bg-white/50 focus-within:bg-white max-w-[500px] w-full shadow-md focus-within:scale-105 transition-all' onSubmit={handleSubmit}>
+        <form className={`relative flex gap-2 p-2 rounded-xl text-black bg-white/50 focus-within:bg-white shadow-md focus-within:scale-105 transition-all ${className}`} onSubmit={handleSubmit}>
             <input className='appearance-none text-xl font-light focus:outline-none w-full bg-transparent'
                 type="text"
                 value={inputText}
