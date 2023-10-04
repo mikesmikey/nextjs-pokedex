@@ -63,7 +63,7 @@ export default function Input({ pokemons }: InputProps) {
                 onFocus={(e) => handleInputFocus(e, true)}
                 onBlur={(e) => handleInputFocus(e, false)}
             />
-            <div className={`${inputFocus ? "flex" : "hidden"} absolute -bottom-2 rounded-md translate-y-full left-0 flex-col bg-white/50 gap-2 max-h-[200px] overflow-y-scroll w-full`}>
+            <div className={`${inputFocus ? "flex" : "hidden"} absolute -bottom-2 rounded-md translate-y-full left-0 flex-col bg-white/80 gap-2 max-h-[200px] overflow-y-scroll w-full`}>
                 {filteredPokemons.map((poke) =>
                     <a
                         className='py-2 px-4 hover:bg-white font-light transition-all cursor-pointer'
