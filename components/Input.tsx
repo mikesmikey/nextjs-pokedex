@@ -51,7 +51,7 @@ export default function Input({ pokemons, className }: InputProps) {
 
     function handleLinkClick(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, pokemon: Pokemon) {
         setInputText(pokemon.name)
-        isSubPath ? router.push(`${pokemon.id}`) : router.push(`pokemon/${pokemon.id}'`)
+        isSubPath ? router.push(`${pokemon.id}`) : router.push(`pokemon/${pokemon.id}`)
     }
 
     return (
