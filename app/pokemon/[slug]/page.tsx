@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full md:w-fit p-4 md:p-0">
         <div className="flex flex-col items-center gap-4 w-full lg:min-w-[100px]">
             <div className="relative mb-8 w-fit md:w-full">
-                <Card className="relative">
+                <Card className="relative items-center">
                     <div className="relative aspect-square w-48">
                         {pokemon.image ? <Image className="object-contain" src={pokemon.image} alt={pokemon.name.toLowerCase()} fill /> : null}
                     </div>
