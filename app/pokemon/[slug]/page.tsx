@@ -9,7 +9,7 @@ import { TypeColor } from "@/constants/TypeColor";
 import { notFound } from 'next/navigation'
 
 export default async function Page({ params }: { params: { slug: string } }) {
-    const pokemon: Pokemon = await getPokemon(decodeURIComponent(params.slug))
+    const pokemon = await getPokemon(decodeURIComponent(params.slug))
     if (!pokemon)
         notFound()
 
@@ -116,9 +116,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-    //TODO: change an any type to pokemon interface
     const pokemons = await getPokemons()
-    return pokemons.map((pokemon: any) => ({
+    return pokemons.map((pokemon: Pokemon) => ({
         slug: pokemon.id,
     }))
 }

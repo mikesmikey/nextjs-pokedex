@@ -1,8 +1,5 @@
 import { getPokemons } from "@/apis/pokemon.api"
 import Input from "@/components/Input"
-import Image from "next/image"
-
-import LogoImg from '@/assets/logo.png'
 
 export default async function Home() {
   const pokemons = await getPokemons()

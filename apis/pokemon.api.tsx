@@ -1,10 +1,10 @@
 import createApolloClient from "@/appollo-client";
 import { gql } from "@apollo/client";
 
-export async function getPokemons() {
+export async function getPokemons() : Promise<Pokemon[]> {
     const client = createApolloClient();
     const { data } = await client.query({
-        //TODO: implying for now we only have 151 pokemons
+        //implying for now we only have 151 pokemons
         query: gql`
         query pokemons{
             pokemons(first: 151) {
@@ -18,7 +18,7 @@ export async function getPokemons() {
     return data.pokemons
 }
 
-export async function getPokemon(id: string) {
+export async function getPokemon(id: string) : Promise<Pokemon> {
     const client = createApolloClient();
     const { data } = await client.query({
         query: gql`

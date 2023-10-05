@@ -38,9 +38,9 @@ export default function Input({ pokemons, className }: InputProps) {
         const found = pokemons.filter((poke) => poke.name.toLowerCase() === inputText.toLowerCase())[0]
         if (found) {
             isSubPath ? router.push(`${found.id}`) : router.push(`pokemon/${found.id}`)
+        } else {
+            isSubPath ? router.push(`${inputText}`) : router.push(`pokemon/${inputText}`)
         }
-        //TODO: implement not found text
-        console.log('not found');
     }
 
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
