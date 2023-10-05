@@ -6,14 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 import EvoCard from "@/components/EvoCard";
 import { TypeColor } from "@/constants/TypeColor";
+import { notFound } from 'next/navigation'
 
 export default async function Page({ params }: { params: { slug: string } }) {
-    const pokemon: Pokemon = await getPokemon(decodeURIComponent(params.slug))
+    const pokemon = await getPokemon(decodeURIComponent(params.slug))
+    if (!pokemon)
+        notFound()
 
     return <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full md:w-fit p-4 md:p-0">
         <div className="flex flex-col items-center gap-4 w-full lg:min-w-[100px]">
             <div className="relative mb-8 w-fit md:w-full">
-                <Card className="relative">
+                <Card className="relative items-center">
                     <div className="relative aspect-square w-48">
                         {pokemon.image ? <Image className="object-contain" src={pokemon.image} alt={pokemon.name.toLowerCase()} fill /> : null}
                     </div>
@@ -113,9 +116,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-    //TODO: change an any type to pokemon interface
     const pokemons = await getPokemons()
-    return pokemons.map((pokemon: any) => ({
+    return pokemons.map((pokemon: Pokemon) => ({
         slug: pokemon.id,
     }))
 }

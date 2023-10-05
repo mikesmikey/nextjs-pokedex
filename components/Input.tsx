@@ -25,7 +25,8 @@ export default function Input({ pokemons, className }: InputProps) {
     }, [])
 
     const inputDebonce = useCallback(lodash.debounce((value: string) => {
-        filterPokemons(value)
+        if (value.trim().length > 0)
+            filterPokemons(value)
     }, 300), [])
 
     const filterPokemons = useCallback((inputValue: string) => {
@@ -38,9 +39,9 @@ export default function Input({ pokemons, className }: InputProps) {
         const found = pokemons.filter((poke) => poke.name.toLowerCase() === inputText.toLowerCase())[0]
         if (found) {
             isSubPath ? router.push(`${found.id}`) : router.push(`pokemon/${found.id}`)
+        } else {
+            isSubPath ? router.push(`${inputText}`) : router.push(`pokemon/${inputText}`)
         }
-        //TODO: implement not found text
-        console.log('not found');
     }
 
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -50,7 +51,7 @@ export default function Input({ pokemons, className }: InputProps) {
 
     function handleLinkClick(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, pokemon: Pokemon) {
         setInputText(pokemon.name)
-        isSubPath ? router.push(`${pokemon.id}`) : router.push(`pokemon/${pokemon.id}'`)
+        isSubPath ? router.push(`${pokemon.id}`) : router.push(`pokemon/${pokemon.id}`)
     }
 
     return (
