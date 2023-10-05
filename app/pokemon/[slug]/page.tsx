@@ -6,9 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import EvoCard from "@/components/EvoCard";
 import { TypeColor } from "@/constants/TypeColor";
+import { notFound } from 'next/navigation'
 
 export default async function Page({ params }: { params: { slug: string } }) {
     const pokemon: Pokemon = await getPokemon(decodeURIComponent(params.slug))
+    if (!pokemon)
+        notFound()
 
     return <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full md:w-fit p-4 md:p-0">
         <div className="flex flex-col items-center gap-4 w-full lg:min-w-[100px]">
