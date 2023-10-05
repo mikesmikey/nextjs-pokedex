@@ -91,6 +91,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     </div>
                 </div>
             </Card>
+            <Card title="Weaknesses">
+                <div className="w-fit">
+                    <div className="grid grid-cols-3 lg:grid-cols-6 gap-4">
+                        {pokemon.weaknesses?.map((type, index) => <Element key={`${type}-${index}`} type={type} />)}
+                    </div>
+                </div>
+            </Card>
             <Card title="Fast Attack Skills">
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     {pokemon.attacks?.fast.map((skill: Skill, index) => {
