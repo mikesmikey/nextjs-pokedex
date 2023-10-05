@@ -25,7 +25,8 @@ export default function Input({ pokemons, className }: InputProps) {
     }, [])
 
     const inputDebonce = useCallback(lodash.debounce((value: string) => {
-        filterPokemons(value)
+        if (value.trim().length > 0)
+            filterPokemons(value)
     }, 300), [])
 
     const filterPokemons = useCallback((inputValue: string) => {
